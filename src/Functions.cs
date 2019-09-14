@@ -9,31 +9,31 @@ namespace Dnn.Resx
 {
     public static class Functions
     {
-        public static IEnumerable<string> Keys (this XmlDocument doc)
+        public static IEnumerable<string> Keys(this XmlDocument doc)
         {
-           return
-                doc
-                .DocumentElement
-                .SelectNodes("/root/data/@name")
-                .Cast<XmlAttribute>()
-                .Select(attr => attr.Value);
+            return
+                 doc
+                 .DocumentElement
+                 .SelectNodes("/root/data/@name")
+                 .Cast<XmlAttribute>()
+                 .Select(attr => attr.Value);
         }
 
-        public static XmlDocument Load (this string filePath)
+        public static XmlDocument Load(this string filePath)
         {
             var doc = new XmlDocument();
             doc.Load(filePath);
-            return doc;          
+            return doc;
         }
 
-        public static string NormalizePath(this string rescource)
+        public static string NormalizePath(this string resource)
         {
-            rescource = rescource.ToLowerInvariant();
-            rescource = rescource.StartsWith("desktopmodules") || rescource.StartsWith("admin") || rescource.StartsWith("controls")
-                        ? "~/" + rescource : rescource;
-            rescource = rescource.EndsWith(".resx")
-                        ? rescource : rescource + ".resx";
-            return rescource;
+            resource = resource.ToLowerInvariant();
+            resource = resource.StartsWith("desktopmodules") || resource.StartsWith("admin") || resource.StartsWith("controls")
+                        ? "~/" + resource : resource;
+            resource = resource.EndsWith(".resx")
+                        ? resource : resource + ".resx";
+            return resource;
         }
     }
 }

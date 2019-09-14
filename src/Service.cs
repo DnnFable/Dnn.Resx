@@ -14,13 +14,13 @@ namespace Dnn.Resx
         }
     }
 
-    public class ServiceController: DnnApiController
+    public class ServiceController : DnnApiController
     {
         [HttpGet]
         [AllowAnonymous]
         public HttpResponseMessage Get(string resKey)
         {
-            var result = new Rescource().For(resKey);
+            var result = new Resources().For(resKey);
             return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(result));
         }
     }

@@ -9,7 +9,7 @@ using DotNetNuke.Services.Localization;
 
 namespace Dnn.Resx
 {
-    public class Rescource
+    public class Resources 
     {
         Func<XmlDocument, IEnumerable<string>> keys = Functions.Keys;
         Func<string, XmlDocument> load              = Functions.Load;
@@ -17,9 +17,9 @@ namespace Dnn.Resx
         Func<string, string> mapPath                = PathUtils.Instance.MapPath;
         Func<string, string, string> localize       = Localization.GetString;
 
-        public Rescource() { }
+        public Resources () { }
         
-        public Rescource(Func<XmlDocument, IEnumerable<string>> keys, Func<string, XmlDocument> load, Func<string, string> normalizePath, Func<string, string> mapPath, Func<string, string, string> localize)
+        public Resources (Func<XmlDocument, IEnumerable<string>> keys, Func<string, XmlDocument> load, Func<string, string> normalizePath, Func<string, string> mapPath, Func<string, string, string> localize)
         {
             this.keys = keys;
             this.load = load;
@@ -28,10 +28,10 @@ namespace Dnn.Resx
             this.localize = localize;
         }
 
-        public IDictionary<string,string> For (string rescource)
+        public IDictionary<string,string> For (string resKey )
         {
-            return keys(load(mapPath(normalizePath(rescource))))
-                   .Select(key => new KeyValuePair<string, string>(key, localize(key, rescource)))
+            return keys(load(mapPath(normalizePath(resKey ))))
+                   .Select(key => new KeyValuePair<string, string>(key, localize(key, resKey)))
                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
     }
