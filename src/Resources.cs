@@ -28,11 +28,10 @@ namespace Dnn.Resx
             this.localize = localize;
         }
 
-        public IDictionary<string,string> For (string resKey )
+        public IDictionary<string, string> For(string resourceFile)
         {
-            return keys(load(mapPath(normalizePath(resKey ))))
-                   .Select(key => new KeyValuePair<string, string>(key, localize(key, resKey)))
-                   .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            return keys(load(mapPath(normalizePath(resourceFile))))
+                   .ToDictionary(key => key, key => localize(key, resourceFile));
         }
     }
 }

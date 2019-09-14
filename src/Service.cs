@@ -18,10 +18,10 @@ namespace Dnn.Resx
     {
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage Get(string resKey)
+        public HttpResponseMessage Get(string resourceFile)
         {
-            var result = new Resources().For(resKey);
-            return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(result));
+            var result = new Resources().For(resourceFile);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }
 }
