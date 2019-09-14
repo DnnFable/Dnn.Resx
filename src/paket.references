@@ -1,0 +1,7 @@
+group Framework
+
+DotNetNuke.Core  
+DotNetNuke.WebApi
+Microsoft.AspNet.WebApi
+Microsoft.AspNet.WebApi.Core
+Microsoft.AspNet.WebApi.Client 
