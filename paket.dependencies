@@ -11,10 +11,6 @@ group Framework
     nuget Microsoft.AspNet.WebApi.Core 5.2.3.0  
     nuget Microsoft.AspNet.WebApi.Client 5.2.3.0
     nuget NewtonSoft.Json 6.0.4
-
-group Fake
-    source https://www.nuget.org/api/v2
-    clitool fake-cli .\.fake
     
 group Build
     source https://www.nuget.org/api/v2
