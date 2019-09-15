@@ -7,3 +7,4 @@ bin/
 *.nupkg
 .fake/
 .install/
+setEnv.ps1

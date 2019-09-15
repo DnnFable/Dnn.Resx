@@ -5,21 +5,21 @@ open Fake.IO
 open Fake.IO.FileSystemOperators 
 open Fake.IO.Globbing.Operators
 open Fake.DotNet
-open Fake.JavaScript
 open Fake.Core
+open Fake.Api
 open Markdig
 open System.Xml
 
 //Properties
-let packageName = "dnn.resx"
+let packageName = "Dnn.Resx"
 let installDir = ".install"
 let buildDir = "src/bin/debug"
 let packageDir = installDir </> "package"
 let deployDir =  installDir </> "deploy"
 let changeLogFile = "RELEASENOTES.md"
 let manifestFile = (sprintf "%s.dnn" packageName )
-
-
+let gitOwner = "scullman"
+let gitName = packageName
 
 [<RequireQualifiedAccess>]
 module Xml =
@@ -64,8 +64,6 @@ Target.create "AssemblyInfo" (fun _ ->
         AssemblyInfo.FileVersion changelog.LatestEntry.AssemblyVersion
       ]
 )
-
-
 
 let copyAssemblies folder =
     !! (buildDir </> "*.dll")
@@ -138,9 +136,23 @@ Target.create "PackModule" (fun _ ->
     createModulePackage ()
 )
 
+Target.create "GitHubRelease" (fun _ ->
+    let token =
+        match Environment.environVarOrDefault "github_token" "" with
+        | s when not (System.String.IsNullOrWhiteSpace s) -> s
+        | _ -> failwith "please set the github_token environment variable to a github personal access token with repro access."
 
-Target.create "Run" (fun _->
-   Trace.trace "Running - enjoy" )
+    let files = !! (installDir </> "*-install.zip")
+
+    let changelog = changeLogFile |> Changelog.load
+    let version = changelog.LatestEntry.AssemblyVersion
+    let notes = [| defaultArg changelog.LatestEntry.Description "[TBD]" |]
+        
+    GitHub.createClientWithToken token
+    |> GitHub.draftNewRelease gitOwner gitName version true notes
+    |> GitHub.uploadFiles files
+    |> GitHub.publishDraft
+    |> Async.RunSynchronously)
 
 open Fake.Core.TargetOperators
 
@@ -151,6 +163,7 @@ open Fake.Core.TargetOperators
     ==> "BuildServices"
     ==> "PackModule"
     ==> "Default"
+    ==> "GitHubRelease"
 
 // start build
 Target.runOrDefault "Default"

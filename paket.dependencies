@@ -20,6 +20,7 @@ group Build
     source https://www.nuget.org/api/v2
     storage:none
     nuget FSharp.Core
+    nuget Fake.Api.GitHub
     nuget Fake.IO.FileSystem
     nuget Fake.IO.Zip
     nuget Fake.DotNet.MsBuild
