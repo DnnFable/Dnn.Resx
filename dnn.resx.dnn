@@ -1,0 +1,19 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Dnn.Resx" type="Library" version="1.0.0">
+      <friendlyName>Dnn Resource Service </friendlyName>
+      <description>A WebApi which returns localized resources as JSON</description>
+       <owner>
+        <name>Stefan Cullmann</name>
+        <organization>DNN Connect</organization>
+        <url>https://github.com/scullman</url>
+        <email>-</email>
+      </owner>
+      <license>MIT</license>
+      <releaseNotes src="releasenotes.html"></releaseNotes> 
+      <azureCompatible>true</azureCompatible>
+      <components>
+       </components>
+    </package>
+  </packages>
+</dotnetnuke>

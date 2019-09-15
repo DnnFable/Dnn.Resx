@@ -2,6 +2,7 @@ group Framework
     source https://www.nuget.org/api/v2
     framework net461
     copy_local: false
+    storage: none
 
     nuget DotNetNuke.Core 8.0.4.226   
     nuget DotNetNuke.Web 8.0.4.226 
@@ -10,3 +11,22 @@ group Framework
     nuget Microsoft.AspNet.WebApi.Core 5.2.3.0  
     nuget Microsoft.AspNet.WebApi.Client 5.2.3.0
     nuget NewtonSoft.Json 6.0.4
+
+group Fake
+    source https://www.nuget.org/api/v2
+    clitool fake-cli .\.fake
+    
+group Build
+    source https://www.nuget.org/api/v2
+    storage:none
+    nuget FSharp.Core
+    nuget Fake.IO.FileSystem
+    nuget Fake.IO.Zip
+    nuget Fake.DotNet.MsBuild
+    nuget Fake.JavaScript.Yarn 
+    nuget Fake.Core.ReleaseNotes
+    nuget Fake.DotNet.AssemblyInfoFile
+    nuget Fake.Core.Target
+    nuget Fake.Core.Xml
+    nuget Fake.Core.Process
+    nuget Markdig

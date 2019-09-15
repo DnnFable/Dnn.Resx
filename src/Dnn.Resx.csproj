@@ -53,12 +53,12 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
         <Reference Include="DotNetNuke">
-          <HintPath>..\packages\framework\DotNetNuke.Core\lib\net40\DotNetNuke.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\dotnetnuke.core\8.0.4.226\lib\net40\DotNetNuke.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ApplicationBlocks.Data">
-          <HintPath>..\packages\framework\DotNetNuke.Core\lib\net40\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\dotnetnuke.core\8.0.4.226\lib\net40\Microsoft.ApplicationBlocks.Data.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -72,7 +72,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="DotNetNuke.Web">
-          <HintPath>..\packages\framework\DotNetNuke.WebApi\lib\net40\DotNetNuke.Web.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\dotnetnuke.webapi\8.0.4.226\lib\net40\DotNetNuke.Web.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -83,7 +83,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
         <Reference Include="System.Net.Http.Formatting">
-          <HintPath>..\packages\framework\Microsoft.AspNet.WebApi.Client\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\microsoft.aspnet.webapi.client\5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -94,7 +94,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
         <Reference Include="System.Web.Http">
-          <HintPath>..\packages\framework\Microsoft.AspNet.WebApi.Core\lib\net45\System.Web.Http.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\microsoft.aspnet.webapi.core\5.2.3\lib\net45\System.Web.Http.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -105,7 +105,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
         <Reference Include="System.Web.Http.WebHost">
-          <HintPath>..\packages\framework\Microsoft.AspNet.WebApi.WebHost\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\microsoft.aspnet.webapi.webhost\5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -116,7 +116,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\framework\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <HintPath>..\..\..\..\..\.nuget\packages\newtonsoft.json\6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>

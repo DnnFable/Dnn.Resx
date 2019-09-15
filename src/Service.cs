@@ -17,9 +17,9 @@ namespace Dnn.Resx
     {
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage Get(string resourceFile, Naming strategy = Naming.Underscores)
+        public HttpResponseMessage Get(string resource, Naming strategy = Naming.Underscores)
         {
-            var result = new Resources().For(resourceFile, strategy);
+            var result = new Resources().For(resource, strategy);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }

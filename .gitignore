@@ -5,3 +5,5 @@ obj/
 bin/
 .nuget/
 *.nupkg
+.fake/
+.install/

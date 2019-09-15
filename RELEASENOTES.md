@@ -1,9 +1,7 @@
-# Dnn.Resx
+# Releasenotes
 
-Loads the localized resources as dictionary / json.
 
-## Usage 
-
+## [0.1.0] - 2019-09-15
 Make a Http GET request with `Dnn.ServicesFramework`:
 
 * ModuleName: Dnn.Resx   
@@ -14,7 +12,3 @@ Make a Http GET request with `Dnn.ServicesFramework`:
 
 Example (for DNN9):   
 /API/Dnn.Resx/Service/get?resource=DesktopModules/HTML/App_LocalResources/EditHtml.ascx
-
-## Build
-
-run `.\build.cmd`
