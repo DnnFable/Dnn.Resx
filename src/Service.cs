@@ -1,5 +1,4 @@
 ﻿using DotNetNuke.Web.Api;
-using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -18,9 +17,9 @@ namespace Dnn.Resx
     {
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage Get(string resourceFile)
+        public HttpResponseMessage Get(string resourceFile, Naming strategy = Naming.Underscores)
         {
-            var result = new Resources().For(resourceFile);
+            var result = new Resources().For(resourceFile, strategy);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }

@@ -9,7 +9,7 @@ namespace Dnn.Resx
 {
     public static class Functions
     {
-        public static IEnumerable<string> Keys(this XmlDocument doc)
+        public static IEnumerable<string> Keys(XmlDocument doc)
         {
             return
                  doc
@@ -19,14 +19,14 @@ namespace Dnn.Resx
                  .Select(attr => attr.Value);
         }
 
-        public static XmlDocument Load(this string filePath)
+        public static XmlDocument Load(string filePath)
         {
             var doc = new XmlDocument();
             doc.Load(filePath);
             return doc;
         }
 
-        public static string NormalizePath(this string resource)
+        public static string NormalizePath(string resource)
         {
             resource = resource.ToLowerInvariant();
             resource = resource.StartsWith("desktopmodules") || resource.StartsWith("admin") || resource.StartsWith("controls")
@@ -34,6 +34,17 @@ namespace Dnn.Resx
             resource = resource.EndsWith(".resx")
                         ? resource : resource + ".resx";
             return resource;
+        }
+
+        public static string ApplyNamingStrategy(string name, Naming naming)
+        {
+            switch (naming)
+            {
+                case Naming.Underscores:
+                    return name.Replace(".", "_");
+                default:
+                    return name;
+            }
         }
     }
 }

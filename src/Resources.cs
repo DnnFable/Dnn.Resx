@@ -1,37 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Services.Localization;
 
 namespace Dnn.Resx
 {
     public class Resources 
     {
-        Func<XmlDocument, IEnumerable<string>> keys = Functions.Keys;
-        Func<string, XmlDocument> load              = Functions.Load;
-        Func<string, string> normalizePath          = Functions.NormalizePath;
-        Func<string, string> mapPath                = PathUtils.Instance.MapPath;
-        Func<string, string, string> localize       = Localization.GetString;
-
-        public Resources () { }
+        readonly Func<XmlDocument, IEnumerable<string>> keys = Functions.Keys;
+        readonly Func<string, XmlDocument> load              = Functions.Load;
+        readonly Func<string, string> normalizePath          = Functions.NormalizePath;
+        readonly Func<string, Naming, string> naming         = Functions.ApplyNamingStrategy;
+        readonly Func<string, string> mapPath                = DotNetNuke.Common.Utilities.PathUtils.Instance.MapPath;
+        readonly Func<string, string, string> localize       = DotNetNuke.Services.Localization.Localization.GetString;
         
-        public Resources (Func<XmlDocument, IEnumerable<string>> keys, Func<string, XmlDocument> load, Func<string, string> normalizePath, Func<string, string> mapPath, Func<string, string, string> localize)
+        public Resources () { }
+
+        public Resources(Func<XmlDocument, IEnumerable<string>> keys, Func<string, XmlDocument> load, Func<string, string> normalizePath, Func<string, string> mapPath, Func<string, string, string> localize, Func<string, Naming, string> naming)
         {
             this.keys = keys;
             this.load = load;
             this.normalizePath = normalizePath;
             this.mapPath = mapPath;
             this.localize = localize;
+            this.naming = naming;
         }
 
-        public IDictionary<string, string> For(string resourceFile)
+        public IDictionary<string, string> For(string resourceFile, Naming strategy)
         {
             return keys(load(mapPath(normalizePath(resourceFile))))
-                   .ToDictionary(key => key, key => localize(key, resourceFile));
+                   .ToDictionary(key => naming(key, strategy), key => localize(key, resourceFile));
         }
     }
 }
